@@ -51,15 +51,21 @@ export default function MilkModal({ setIsMilkModalOpen }) {
               try {
                 if (milk || extra) {
                   if (!extra) {
-                    setExtra(0);
+                    await addMilk(parseInt(milk), 0);
+                    setMilk("");
+                    setExtra("");
+                    setIsMilkModalOpen(false);
+                  } else if (!milk) {
+                    await addMilk(0, parseInt(extra));
+                    setMilk("");
+                    setExtra("");
+                    setIsMilkModalOpen(false);
+                  } else {
+                    await addMilk(parseInt(milk), parseInt(extra));
+                    setMilk("");
+                    setExtra("");
+                    setIsMilkModalOpen(false);
                   }
-                  if (!milk) {
-                    setMilk(0);
-                  }
-                  await addMilk(parseInt(milk), parseInt(extra));
-                  setMilk("");
-                  setExtra("");
-                  setIsMilkModalOpen(false);
                 } else {
                   setError(true);
                 }
