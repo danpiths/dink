@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { useUserContext } from "../context/UserContext";
 import { addDinner, auth } from "../lib/firebase";
@@ -22,12 +23,11 @@ export default function HomeMenu() {
         </div>
         <div className="mt-2 flex items-center gap-3">
           <p>Group: {firestoreUser?.gid}</p>
-          <a
-            href="/registerGroup"
-            className="rounded-sm bg-gray-700 px-3 py-1 text-xs text-white hover:bg-gray-800 focus:bg-gray-800 focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 active:bg-gray-900"
-          >
-            Change
-          </a>
+          <Link href="/registerGroup">
+            <a className="rounded-sm bg-gray-700 px-3 py-1 text-xs text-white hover:bg-gray-800 focus:bg-gray-800 focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 active:bg-gray-900">
+              Change
+            </a>
+          </Link>
         </div>
       </div>
 
@@ -50,12 +50,11 @@ export default function HomeMenu() {
       >
         Add Milk
       </button>
-      <a
-        href="/expenses"
-        className="flex flex-1 items-center justify-center rounded-sm bg-emerald-500 px-4 py-5 font-bold uppercase tracking-wider text-white hover:bg-emerald-600 focus:bg-emerald-600 focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 active:bg-emerald-700"
-      >
-        <div>Expenses</div>
-      </a>
+      <Link href="/expenses">
+        <a className="flex flex-1 items-center justify-center rounded-sm bg-emerald-500 px-4 py-5 font-bold uppercase tracking-wider text-white hover:bg-emerald-600 focus:bg-emerald-600 focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2 active:bg-emerald-700">
+          <div>Expenses</div>
+        </a>
+      </Link>
       {isMilkModalOpen && <MilkModal setIsMilkModalOpen={setIsMilkModalOpen} />}
     </>
   );

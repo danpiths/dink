@@ -3,6 +3,7 @@ import React from "react";
 import { auth } from "../lib/firebase";
 import { useUserContext } from "../context/UserContext";
 import { signOut } from "firebase/auth";
+import Link from "next/link";
 
 export default function NavPanel({ isPanelOpen, setIsPanelOpen }) {
   const { user, router } = useUserContext();
@@ -29,27 +30,29 @@ export default function NavPanel({ isPanelOpen, setIsPanelOpen }) {
         </button>
       </div>
       <div className="mt-5 flex flex-col items-center gap-2">
-        <a
-          href="/"
-          onClick={closePanel}
-          className={`self-stretch bg-black/80 py-7 pr-6 text-right text-xl font-bold text-white hover:bg-black/90 focus:bg-black/90 focus:outline-none active:bg-black/100 ${
-            router.route === "/" &&
-            "underline decoration-white underline-offset-1"
-          }`}
-        >
-          Home
-        </a>
-        {user && (
+        <Link href="/">
           <a
-            href="/expenses"
             onClick={closePanel}
-            className={`self-stretch bg-emerald-500/80 py-7 pr-6 text-right text-xl font-bold text-white hover:bg-emerald-500/90 focus:bg-emerald-500/90 focus:outline-none active:bg-emerald-500/100 ${
-              router.route === "/expenses" &&
+            className={`self-stretch bg-black/80 py-7 pr-6 text-right text-xl font-bold text-white hover:bg-black/90 focus:bg-black/90 focus:outline-none active:bg-black/100 ${
+              router.route === "/" &&
               "underline decoration-white underline-offset-1"
             }`}
           >
-            Expenses
+            Home
           </a>
+        </Link>
+        {user && (
+          <Link href="/expenses">
+            <a
+              onClick={closePanel}
+              className={`self-stretch bg-emerald-500/80 py-7 pr-6 text-right text-xl font-bold text-white hover:bg-emerald-500/90 focus:bg-emerald-500/90 focus:outline-none active:bg-emerald-500/100 ${
+                router.route === "/expenses" &&
+                "underline decoration-white underline-offset-1"
+              }`}
+            >
+              Expenses
+            </a>
+          </Link>
         )}
         {user && (
           <button

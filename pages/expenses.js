@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect } from "react";
 import DinnerExpenseCard from "../components/DinnerExpenseCard";
 import Loader from "../components/Loader";
@@ -30,12 +31,11 @@ export default function Expense() {
             <MilkExpenseCard />
             <DinnerExpenseCard />
           </div>
-          <a
-            href="/"
-            className="self-stretch rounded-sm bg-gray-700 px-4 py-3 text-center font-bold uppercase tracking-wider text-white hover:bg-gray-800 focus:bg-gray-800 focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 active:bg-gray-900"
-          >
-            Back Home
-          </a>
+          <Link href="/">
+            <a className="self-stretch rounded-sm bg-gray-700 px-4 py-3 text-center font-bold uppercase tracking-wider text-white hover:bg-gray-800 focus:bg-gray-800 focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 active:bg-gray-900">
+              Back Home
+            </a>
+          </Link>
         </>
       )}
     </div>
